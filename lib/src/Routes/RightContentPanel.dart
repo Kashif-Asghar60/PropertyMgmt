@@ -18,6 +18,7 @@ class RightContentPanel extends StatelessWidget {
     return Expanded(
       child: Container(
         width: Dimensions.screenWidth*2,
+        height: Dimensions.screenHeight,
         color: AppConstants.content_areaClr,
         child: Navigator(
           key: _navigatorKey,

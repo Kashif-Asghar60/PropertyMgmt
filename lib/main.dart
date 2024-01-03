@@ -45,19 +45,19 @@ import 'src/screens/Contracts/contract_information.dart';
 import 'src/screens/Login/login.dart';
 import 'src/screens/Parties/Parties_Information.dart';
 import 'src/screens/Properties/property_information.dart';
+import 'src/screens/Reports/Financial Reports/content_navigation.dart';
 import 'src/screens/Tenents/view_tenents.dart';
 import 'src/screens/Units/units_information.dart';
 import 'src/screens/Units/units_issued.dart'; // Import your home widget
 
 void updateDimensions(BuildContext context) {
-    final dimensionsProvider = Provider.of<DimensionsProvider>(context, listen: false); 
-        dimensionsProvider.init(context);
+  final dimensionsProvider =
+      Provider.of<DimensionsProvider>(context, listen: false);
+  dimensionsProvider.init(context);
 
   Dimensions.init(context);
   // You can also perform any additional logic here if needed
 }
-
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,8 +72,9 @@ void main() async {
       providers: [
         ChangeNotifierProvider(
             create: (_) => AuthProvider()), // Initialize AuthProvider
-                ChangeNotifierProvider(
-            create: (_) => DimensionsProvider()), 
+        ChangeNotifierProvider(create: (_) => DimensionsProvider()),
+
+        ChangeNotifierProvider(create: (_) => NavigationProvider()),
       ],
       child: Builder(builder: (BuildContext context) {
         Dimensions.init(context);
@@ -124,7 +125,6 @@ void main() async {
   );
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -133,12 +133,10 @@ class MyApp extends StatelessWidget {
         "authProvider chk ${authProvider.isLoggedIn}...  ${authProvider.userId}... ${authProvider.rememberMe}");
     return MaterialApp(
       theme: ThemeData(
-    inputDecorationTheme: InputDecorationTheme(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.greenAccent)
-      ),
-    )
-  ),
+          inputDecorationTheme: InputDecorationTheme(
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.greenAccent)),
+      )),
       debugShowCheckedModeBanner: false,
       initialRoute: '/', // Use the wrapper as the initial route
       routes: {

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:propertymgmt_uae/src/screens/Contracts/contract_form.dart';
 import 'package:propertymgmt_uae/src/screens/Payment/printReceipts/payment_cheque.dart';
 import 'package:propertymgmt_uae/src/screens/Payment/payment_view.dart';
+import 'package:propertymgmt_uae/src/screens/Reports/Currency%20Recipts/create_currencyRecipt.dart';
+import 'package:propertymgmt_uae/src/screens/Reports/Currency%20Recipts/information_currencyRecipt.dart';
+import 'package:propertymgmt_uae/src/screens/Reports/Financial%20Reports/content_navigation.dart';
 
 import '../screens/Contracts/contract_information.dart';
 import '../screens/Parties/Parties_Information.dart';
@@ -24,7 +27,8 @@ class RouteSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (routeName) {
       case RouteStrings.dashboard:
-        return  PaymentCheque();
+       return Details_Currency_Reciept();
+        //return  FinancialReportsMainContent();
       case RouteStrings.masterAccount:
         return const PartyInformationTable();
       case RouteStrings.rentals:

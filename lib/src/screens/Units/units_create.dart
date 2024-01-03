@@ -365,19 +365,7 @@ void dispose() {
                           fontWeight: FontWeight.w500,
                           showStar: true),
                       SizedBox(width: Dimensions.spaceBetweenTxtField),
-                 /*      CustomDropdownTextField(
-                          width: Dimensions.widthTxtField,
-                          label: "",
-                          items: selectPropertyItems,
-                          value: propertySelectedVal,
-                          onChanged: (newValue) {
-                            setState(() {
-                              propertySelectedVal = newValue;
-                            });
-                          },
-                          errorText: propertyErrorText,
-                          backgroundColor: AppConstants.whitecontainer),
-                            */  FutureBuilder<List<String>>(
+              FutureBuilder<List<String>>(
                       future:
                           FirebaseServices().fetchPropertyNameItems(), // Function to fetch project items
                       builder: (context, snapshot) {

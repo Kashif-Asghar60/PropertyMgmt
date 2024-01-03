@@ -25,6 +25,7 @@ class CustomFormContainer extends StatelessWidget {
         Dimensions.paddingtenants,
         0,
       ), 
+      height: Dimensions.screenHeight,
       color: AppConstants.content_areaClr,
       child: SingleChildScrollView(
         child: Column(

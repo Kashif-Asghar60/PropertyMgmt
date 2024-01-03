@@ -17,34 +17,40 @@ class CustomDataTable extends StatelessWidget {
   });
 
   double tableTextSize = Dimensions.textSize / 1.3;
-
-
   final ScrollController _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-     // shrinkWrap: true,
-      children: [
-        SizedBox(
-          height: Dimensions.screenHeight,
-            width: Dimensions.screenWidth * widthforMorecolumns,
-            child: buildDataTable2())
-      ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+         double headingRowFraction = 0.20; // Adjust the fraction as needed
+        double headingRowHeight =
+            (constraints.maxHeight * headingRowFraction).clamp(0.0, 40.0);
+
+        return ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            SizedBox(
+              height: constraints.maxHeight,
+              width: Dimensions.screenWidth * widthforMorecolumns,
+              child: buildDataTable2(headingRowHeight),
+            ),
+          ],
+        );
+      },
     );
   }
 
-  Widget buildDataTable2() {
+  Widget buildDataTable2(double headingRowHeight) {
     bool isOdd = false; // Initialize isOdd to false
+
     return DataTable2(
       isHorizontalScrollBarVisible: true,
       isVerticalScrollBarVisible: true,
       columnSpacing: 12,
       scrollController: _controller,
       minWidth: Dimensions.dataCellWidth / 1.5,
-      headingRowHeight: tableTextSize * 4,
-      dividerThickness: 1.0,
+      headingRowHeight: headingRowHeight,
       border: TableBorder.all(color: Colors.grey),
       horizontalMargin: 5,
       headingTextStyle: TextStyle(
@@ -73,6 +79,7 @@ class CustomDataTable extends StatelessWidget {
     );
   }
 }
+
 
 /* 
 class CustomDataTable extends StatelessWidget {

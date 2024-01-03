@@ -24,6 +24,9 @@ class FirebaseConstants {
 
   static const String contracts = "Contracts";
     static const String payments = "Payments";
+
+//vouchers
+  static const String journalVouchers = "JournalVouchers";
 }
 
 class Dimensions {
@@ -53,7 +56,7 @@ class Dimensions {
 //tenants
   static double tenantspaddingpercentage = 3.2;
 // Button
-  static double ButtonWidthpercentage = 7.1;
+  static double ButtonWidthpercentage = 8.1;
   static double ButtonHeightpercentage = 3.1;
 //Tablw
   static double dataTableWidthpercentage = 82;

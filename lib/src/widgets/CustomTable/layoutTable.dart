@@ -19,10 +19,17 @@ class CustomDataTableLayout extends StatelessWidget {
   // final List<DataRow> Datarows;
 
   final List<DataRow2> rows;
+
+
+  //table 2
+    final bool showTable2;
+  final List<DataColumn2>? columns2;
+  final List<DataRow2>?rows2;
+
   final Function()? onDeleteButtonTap;
   final Function()? onEditButtonTap;
   final double widthforMorecolumns;
-
+ final double widthforMorecolumns2;
   final bool showPrintChequeButton; // Whether to show the "Print Cheque" button
   final bool
       showPrintReceiptButton; // Whether to show the "Print Receipt" button
@@ -31,6 +38,8 @@ class CustomDataTableLayout extends StatelessWidget {
 
   CustomDataTableLayout({
     this.widthforMorecolumns = 1.0,
+        this.widthforMorecolumns2 = 1.0,
+
     required this.headingText,
     required this.buttonText,
     required this.onButtonTap,
@@ -40,6 +49,9 @@ class CustomDataTableLayout extends StatelessWidget {
     required this.columns,
     //  required this.Datarows,
     required this.rows,
+ this.columns2,
+ this.rows2,
+this.showTable2=false,
     this.onDeleteButtonTap,
     this.onEditButtonTap,
     this.showPrintChequeButton = false, // Default to false
@@ -62,6 +74,7 @@ class CustomDataTableLayout extends StatelessWidget {
         width: Dimensions.dataTableWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               width: Dimensions.dataTableWidth,
@@ -131,7 +144,22 @@ class CustomDataTableLayout extends StatelessWidget {
               height: Dimensions.sizeboxWidth * 3,
             ),
             // data table here
+showTable2? Flexible(
+                  fit: FlexFit.tight,
 
+  child: SizedBox(
+   height: Dimensions.widthTxtField/1.3,
+  
+ 
+                child: CustomDataTable(
+                  columns: columns,
+                  rows: rows,
+                  widthforMorecolumns: widthforMorecolumns,
+                ),
+              
+  
+  ),
+):
             Flexible(
               fit: FlexFit.tight,
               child: CustomDataTable(
@@ -141,7 +169,18 @@ class CustomDataTableLayout extends StatelessWidget {
               ),
             ),
 
-            // CustomDataGrid(columns: GridColumncolumns, rows: Datarows)
+            // table 2 
+            if(showTable2) SizedBox( height: Dimensions.buttonHeight,),
+              if(showTable2)Flexible(
+              fit: FlexFit.tight,
+              child: CustomDataTable(
+                columns: columns2!,
+                rows: rows2!,
+                widthforMorecolumns: widthforMorecolumns,
+              ),
+            ),
+
+            // CustomDataGrid(columns:  GridColumncolumns, rows: Datarows)
 
             if (showPrintChequeButton || showPrintReceiptButton)
               Row(
